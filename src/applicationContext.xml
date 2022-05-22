@@ -7,38 +7,10 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <!-- load the properties file: sport.properties  -->
-    <context:property-placeholder location="classpath:sport.properties"/>
-
-    <!-- Define your beans here -->
     
-    	
-    <bean id="myFortuneService"
-    	class="com.chris.springproject.RandomFortuneService"></bean>
+    <!-- add entry to enable component scanning -->
     
-    <bean id="myCoach"
-    	class="com.chris.springproject.TrackCoach">
-    	
-    	<constructor-arg ref="myFortuneService"/>
-    </bean>
-    
-    <bean id="myCricketCoach"
-    	class="com.chris.springproject.CricketCoach">
-    	
-    	<!-- set up setter injection -->
-    	<property name="fortuneService" ref="myFortuneService"/>
-    	
-    	<!-- inject literal values -->
-    	<property name="emailAddress" value="${foo.email}"/>
-    	<property name="team" value="${foo.team}"/>
-    </bean>
-    
-    <bean id="myGolfCoach"
-    	class="com.chris.springproject.GolfCoach">
-    	
-    	<constructor-arg ref="myFortuneService"/>
-    </bean>
-    
+    <context:component-scan base-package="com.chris.spring_annotation_project"/>
     
     
 </beans>
